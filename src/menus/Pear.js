@@ -1,17 +1,20 @@
 import React, {useState} from 'react'
+import HeaderSearch from '../layout/HeaderSearch'
 import Loading from '../Loading'
 
 const Pear = () => {
   const [loading, setLoading] = useState(false)
 
-  const loadingClick = () => {
-    setLoading(!loading)
-    console.log('Loading is ' + loading)
+  const pearClick = () => {
+    setLoading(true)
+    const revertLoading = () => {
+      setLoading(false)
+    }
+    setTimeout(revertLoading, 2000)
   }
 
   return (
     <>
-      <Loading />
       <div className='p-16'>
         <div
           className='antialiased overflow-hidden'
@@ -24,37 +27,7 @@ const Pear = () => {
           <main className='flex flex-col h-full'>
             <header className='flex-shrink-0 bg-header'>
               <div className='flex items-center p-3'>
-                <div className='flex-grow'>
-                  <div className='flex items-center py-1 px-2 shadow-lg rounded transition duration-150 ease-in-out bg-white-20p focus-within:bg-white-30p'>
-                    <div className='pr-2 text-purple-200'>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='16'
-                        height='16'
-                        viewBox='0 0 24 24'
-                        fill='none'
-                        stroke='currentColor'
-                        strokeWidth='2'
-                        stroke-linecap='round'
-                        stroke-linejoin='round'
-                        className='feather feather-search'
-                      >
-                        <circle cx='11' cy='11' r='8'></circle>
-                        <line x1='21' y1='21' x2='16.65' y2='16.65'></line>
-                      </svg>
-                    </div>
-                    <input
-                      type='text'
-                      value=''
-                      className='w-full bg-transparent text-sm placeholder-purple-100 text-purple-100'
-                      placeholder='Search...'
-                      autoComplete='off'
-                      autoCorrect='off'
-                      autoCapitalize='off'
-                      spellCheck='false'
-                    />
-                  </div>
-                </div>
+                <HeaderSearch />
                 <button className='ml-2 flex items-center justify-center h-8 w-8 text-purple-200 hover:text-purple-100 transition duration-150 ease-in-out'>
                   <div>
                     <svg
@@ -315,7 +288,7 @@ const Pear = () => {
                   <div className='pear'>
                     {!loading ? (
                       <button
-                        onClick={() => loadingClick()}
+                        onClick={() => pearClick()}
                         type='button'
                         className='flex items-center justify-center h-6 w-6'
                       >

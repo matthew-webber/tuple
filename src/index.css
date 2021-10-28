@@ -1,9 +1,9 @@
-@import-normalize; /* bring in normalize.css styles */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.bg-header {
-  background-color: #4a1d96;
+@layer utilities {
+  .bg-header {
+    background-color: #4a1d96;
+  }
 }

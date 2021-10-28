@@ -10,8 +10,8 @@ const Loading = () => {
 }
 
 const rollingStyle = {
-  width: '20px',
-  height: '20px',
+  width: '24px',
+  height: '24px',
 }
 
 export default Loading
