@@ -1,3 +1,5 @@
+@import-normalize; /* bring in normalize.css styles */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,5 +7,14 @@
 @layer utilities {
   .bg-header {
     background-color: #4a1d96;
+  }
+  .bg-white-20p {
+    background-color: hsla(0, 0%, 100%, 0.2);
+  }
+  .focus-within\:bg-white-30p:focus-within {
+    background-color: hsla(0, 0%, 100%, 0.3);
+  }
+  input {
+    outline: 'none';
   }
 }

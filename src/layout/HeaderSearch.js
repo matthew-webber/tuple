@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const HeaderSearch = () => {
+  const [value, setValue] = useState('')
+
+  const inputChange = (e) => {
+    setValue(e.target.value)
+  }
+
   return (
     <div className='flex-grow'>
-      <div className='flex items-center py-1 px-2 shadow-lg rounded transition duration-150 ease-in-out bg-white focus-within:bg-white'>
+      <div className='flex items-center py-1 px-2 shadow-lg rounded transition duration-150 ease-in-out bg-white-20p focus-within:bg-white-30p'>
         <div className='pr-2 text-purple-200'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -23,13 +29,14 @@ const HeaderSearch = () => {
         </div>
         <input
           type='text'
-          value=''
-          className='w-full bg-transparent text-sm placeholder-purple-100 text-purple-100'
+          value={value}
+          className='w-full bg-transparent text-sm placeholder-purple-100 text-purple-100 outline-none'
           placeholder='Search...'
           autoComplete='off'
           autoCorrect='off'
           autoCapitalize='off'
           spellCheck='false'
+          onChange={inputChange}
         />
       </div>
     </div>
