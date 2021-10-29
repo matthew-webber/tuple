@@ -26,6 +26,7 @@ const UserCard = ({userInfo, presence}) => {
   }
 
   const statusColor = getStatusColor(presence)
+  console.log(statusColor, 'statuscolor')
 
   return (
     <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>

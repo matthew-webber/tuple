@@ -183,6 +183,7 @@ const Pear = () => {
                   userName: 'Matt Webber',
                   userEmail: 'matthew.lee.webber@gmail.com',
                 }}
+                presence='online'
               />
               {/* <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
                 <div className='flex-shrink-0 flex items-center justify-end transition-all duration-150 ease-in-out overflow-hidden w-0'>
