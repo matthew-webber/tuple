@@ -17,4 +17,11 @@
   input {
     outline: 'none';
   }
+  .scroll-hide-chrome::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-hide-ff {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
 }
