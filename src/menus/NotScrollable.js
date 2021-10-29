@@ -3,20 +3,10 @@ import {Fade} from 'react-awesome-reveal'
 import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
 import UserCard from '../layout/UserCard'
-import Loading from '../Loading'
 import {EditIcon, CancelIcon} from '../media/Icons'
 
 const NotScrollable = () => {
-  const [loading, setLoading] = useState(false)
   const [editing, setEditing] = useState(false)
-
-  const pearClick = () => {
-    setLoading(true)
-    const revertLoading = () => {
-      setLoading(false)
-    }
-    setTimeout(revertLoading, 2000)
-  }
 
   const editClick = () => {
     setEditing(!editing)
@@ -26,7 +16,8 @@ const NotScrollable = () => {
     <>
       <div className='p-16'>
         <h2 className='pb-2 text-sm text-gray-700'>
-          Hidden scrollbar + "more content blur" <sup>1</sup>
+          Hidden scrollbar w/ "more content blur"{' '}
+          <sup className='text-red-900 text-base'>*</sup>
         </h2>
         <div
           className='antialiased overflow-hidden'
@@ -194,7 +185,7 @@ const NotScrollable = () => {
                   userInfo={{
                     imgThumb: <Gravatar />,
                     userName: 'Jeramy Baker',
-                    userEmail: 'jeramytbaker@gmail.com',
+                    userEmail: 'jeramy@gmail.com',
                   }}
                   presence='online'
                   editing={editing}
@@ -244,7 +235,8 @@ const NotScrollable = () => {
           </main>
         </div>
         <h2 className='pt-2 text-sm text-gray-700'>
-          <sup>1</sup> Not scrollable...<i>yet!</i>
+          <sup className='text-red-900 text-base'>*</sup> Not scrollable...
+          <i>yet!</i>
         </h2>
       </div>
     </>

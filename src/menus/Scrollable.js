@@ -3,20 +3,10 @@ import {Fade} from 'react-awesome-reveal'
 import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
 import UserCard from '../layout/UserCard'
-import Loading from '../Loading'
 import {EditIcon, CancelIcon} from '../media/Icons'
 
 const Scrollable = () => {
-  const [loading, setLoading] = useState(false)
   const [editing, setEditing] = useState(false)
-
-  const pearClick = () => {
-    setLoading(true)
-    const revertLoading = () => {
-      setLoading(false)
-    }
-    setTimeout(revertLoading, 2000)
-  }
 
   const editClick = () => {
     setEditing(!editing)
@@ -185,15 +175,17 @@ const Scrollable = () => {
                   userEmail: 'matthew.lee.webber@gmail.com',
                 }}
                 presence='online'
+                friend='true'
                 editing={editing}
               />
               <UserCard
                 userInfo={{
                   imgThumb: <Gravatar />,
                   userName: 'Jeramy Baker',
-                  userEmail: 'jeramytbaker@gmail.com',
+                  userEmail: 'jeramy@gmail.com',
                 }}
                 presence='online'
+                friend='true'
                 editing={editing}
               />
               <UserCard
@@ -203,6 +195,7 @@ const Scrollable = () => {
                   userEmail: 'richard@hs.com',
                 }}
                 presence='busy'
+                friend='true'
                 editing={editing}
               />
               <UserCard
@@ -212,6 +205,7 @@ const Scrollable = () => {
                   userEmail: 'gratefulbrent@dead.com',
                 }}
                 presence='offline'
+                friend='true'
                 editing={editing}
               />
               <div
