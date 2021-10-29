@@ -155,10 +155,10 @@ const NotScrollable = () => {
             </header>
             <div className='flex-shrink-0'></div>
             <div className='scroll-hide-chrome relative flex-grow overflow-y-hidden users-main'>
-              <div className='users-overlay'>
+              <div className='flex-grow users-overlay'>
                 <div
                   className='sticky top-0 flex items-center bg-gray-50 z-10 p-3 border-b leading-3'
-                  style={{fontSize: '11'}}
+                  style={{fontSize: '11px'}}
                 >
                   <div className='flex-grow uppercase text-gray-500 tracking-wider font-bold'>
                     My Friends
@@ -177,6 +177,7 @@ const NotScrollable = () => {
                     imgThumb: <Gravatar />,
                     userName: 'Matt Webber',
                     userEmail: 'matthew.lee.webber@gmail.com',
+                    friend: true,
                   }}
                   presence='online'
                   editing={editing}
@@ -186,15 +187,7 @@ const NotScrollable = () => {
                     imgThumb: <Gravatar />,
                     userName: 'Jeramy Baker',
                     userEmail: 'jeramy@gmail.com',
-                  }}
-                  presence='online'
-                  editing={editing}
-                />
-                <UserCard
-                  userInfo={{
-                    imgThumb: <Gravatar />,
-                    userName: 'Richard Christy',
-                    userEmail: 'richard@hs.com',
+                    friend: true,
                   }}
                   presence='busy'
                   editing={editing}
@@ -202,15 +195,16 @@ const NotScrollable = () => {
                 <UserCard
                   userInfo={{
                     imgThumb: <Gravatar />,
-                    userName: 'Brent Mydland',
-                    userEmail: 'gratefulbrent@dead.com',
+                    userName: 'Richard Christy',
+                    userEmail: 'richard@hs.com',
+                    friend: true,
                   }}
-                  presence='offline'
+                  presence='busy'
                   editing={editing}
                 />
                 <div
                   className='sticky top-0 flex items-center bg-gray-50 z-10 p-3 border-t border-b leading-3'
-                  style={{fontSize: '11'}}
+                  style={{fontSize: '11px'}}
                 >
                   <div className='flex-grow uppercase text-gray-500 tracking-wider font-bold'>
                     Team Directory
@@ -218,9 +212,20 @@ const NotScrollable = () => {
                 </div>
                 <UserCard
                   userInfo={{
-                    imgThumb: <Gravatar />,
-                    userName: 'John Doe',
-                    userEmail: 'johndoe@gmail.com',
+                    imgThumb: (
+                      <Gravatar src='https://www.gravatar.com/avatar/b635972e073c025c34c6226c5a8a01f9?s=80&d=https%3A%2F%2Fs3.wasabisys.com%2Ftuple%2Fimages%2Fmissing-gravatar-purple.png' />
+                    ),
+                    userName: 'Ben Orenstein',
+                    userEmail: 'ben@tuple.app',
+                  }}
+                />
+                <UserCard
+                  userInfo={{
+                    imgThumb: (
+                      <Gravatar src='https://www.gravatar.com/avatar/441211cbec372b4ffc4c5dbd9278bc25?s=80&d=https%3A%2F%2Fs3.wasabisys.com%2Ftuple%2Fimages%2Fmissing-gravatar-purple.png' />
+                    ),
+                    userName: 'Derrick Reimer',
+                    userEmail: 'derrickreimer@gmail.com',
                   }}
                 />
                 <UserCard
@@ -228,6 +233,13 @@ const NotScrollable = () => {
                     imgThumb: <Gravatar />,
                     userName: 'Jane Doe',
                     userEmail: 'janedoe@gmail.com',
+                  }}
+                />
+                <UserCard
+                  userInfo={{
+                    imgThumb: <Gravatar />,
+                    userName: 'John Doe',
+                    userEmail: 'johndoe@gmail.com',
                   }}
                 />
               </div>

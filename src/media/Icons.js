@@ -3,12 +3,12 @@ export const EditIcon = () => {
     <>
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='20'
-        height='20'
+        width='18'
+        height='18'
         viewBox='0 0 24 24'
         fill='none'
         stroke='currentColor'
-        stroke-width='2'
+        stroke-width='1.5'
         stroke-linecap='round'
         stroke-linejoin='round'
         class='feather feather-edit-2'
@@ -24,12 +24,12 @@ export const CancelIcon = () => {
     <>
       <svg
         xmlns='http://www.w3.org/2000/svg'
-        width='20'
-        height='20'
+        width='18'
+        height='18'
         viewBox='0 0 24 24'
         fill='none'
         stroke='currentColor'
-        stroke-width='2'
+        stroke-width='3'
         stroke-linecap='round'
         stroke-linejoin='round'
         class='feather feather-x'
@@ -155,6 +155,29 @@ export const PearIcon = () => {
             d='M24.8805,18.9186c2.9293-1.0048,6.3086-0.3418,8.6475,1.9971c3.0495,3.0495,7.5868,4.6409,12.0426,6.2396 c1.658,0.5922,3.3012,1.1843,4.8482,1.843c2.1169,0.9178,4.0709,1.9689,5.6401,3.3604c0.185,0.1702,0.3627,0.333,0.5403,0.5107 c6.3433,6.3433,6.3359,16.6243,0,22.9601c-6.3433,6.3433-16.6169,6.3433-22.9601,0c-0.1776-0.1776-0.3405-0.3553-0.5107-0.5403 c-1.5396-1.6728-2.6573-3.6046-3.3604-5.6401c-0.6588-1.5469-1.2509-3.1901-1.8431-4.8481 c-1.5987-4.4558-3.1901-8.9931-6.2396-12.0426c-2.1564-2.1564-2.8915-5.1939-2.2052-7.9509'
           />
         </g>
+      </svg>
+    </>
+  )
+}
+
+export const AddFriendIcon = () => {
+  return (
+    <>
+      <svg
+        xmlns='http://www.w3.org/2000/svg'
+        width='20'
+        height='20'
+        viewBox='0 0 24 24'
+        fill='none'
+        stroke='currentColor'
+        stroke-width='1.5'
+        stroke-linecap='round'
+        stroke-linejoin='round'
+        class='feather feather-plus-circle'
+      >
+        <circle cx='12' cy='12' r='10'></circle>
+        <line x1='12' y1='8' x2='12' y2='16'></line>
+        <line x1='8' y1='12' x2='16' y2='12'></line>
       </svg>
     </>
   )

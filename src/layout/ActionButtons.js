@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import Loading from '../Loading'
 import {PhoneIcon, MonitorIcon, MoreIconVt as MoreIconHz} from '../media/Icons'
+import ActionButton from './ActionButton'
 
-const ActionButtons = () => {
+const ActionButtons = ({available, friend}) => {
   const [loading, setLoading] = useState(false)
 
-  const pearClick = () => {
+  const moreClick = () => {
     setLoading(true)
     const revertLoading = () => {
       setLoading(false)
@@ -15,43 +16,20 @@ const ActionButtons = () => {
 
   return (
     <>
-      <div className='px-2'>
-        <button
-          type='button'
-          className='flex items-center justify-center h-6 w-6'
-        >
-          <div className='text-gray-400 hover:text-gray-500 transition duration-150 ease-in-out'>
-            <PhoneIcon />
-          </div>
-        </button>
-      </div>
-      <div className='px-2'>
-        <button
-          type='button'
-          className='flex items-center justify-center h-6 w-6'
-        >
-          <div className='text-gray-400 hover:text-gray-500 transition duration-150 ease-in-out'>
-            <MonitorIcon />
-          </div>
-        </button>
-      </div>
-      <div className='px-2'>
-        <div className='pear'>
-          {!loading ? (
-            <button
-              onClick={() => pearClick()}
-              type='button'
-              className='flex items-center justify-center h-6 w-6'
-            >
-              <div className='text-gray-400 hover:text-gray-500 transition duration-150 ease-in-out'>
-                <MoreIconHz />
-              </div>
-            </button>
-          ) : (
-            <Loading />
-          )}
+      {available && (
+        <>
+          <ActionButton content={<PhoneIcon />} />
+          <ActionButton content={<MonitorIcon />} />
+        </>
+      )}
+
+      {!loading ? (
+        <ActionButton content={<MoreIconHz />} onClick={moreClick} />
+      ) : (
+        <div className='px-2'>
+          <Loading />
         </div>
-      </div>
+      )}
     </>
   )
 }

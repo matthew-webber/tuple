@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 import Loading from '../Loading'
+import {AddFriendIcon} from '../media/Icons'
+import ActionButton from './ActionButton'
 import ActionButtons from './ActionButtons'
 import Gravatar from './Gravatar'
 
 const UserCard = ({userInfo, presence, editing}) => {
-  const {imgThumb, userName, userEmail} = userInfo
+  const {imgThumb, userName, userEmail, friend} = userInfo
 
   const getStatusColor = (p) => {
     return p === 'online'
@@ -13,7 +15,7 @@ const UserCard = ({userInfo, presence, editing}) => {
       ? 'bg-gray-400'
       : p === 'busy'
       ? 'bg-red-400'
-      : null
+      : ''
   }
 
   const getAvailability = (a) => {
@@ -22,9 +24,8 @@ const UserCard = ({userInfo, presence, editing}) => {
 
   const statusColor = getStatusColor(presence)
   const available = getAvailability(presence)
+  const statusOpacity = !available && friend ? 'opacity-75' : ''
   const editButtonSize = editing ? 'w-8' : 'w-0'
-
-  console.log(statusColor, 'statuscolor')
 
   return (
     <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
@@ -54,7 +55,7 @@ const UserCard = ({userInfo, presence, editing}) => {
           </div>
         </button>
       </div>
-      <div className='relative p-3 flex-shrink-0 '>
+      <div className={`relative p-3 flex-shrink-0 ${statusOpacity}`}>
         <div className='relative w-10 h-10'>{imgThumb}</div>
         {statusColor ? (
           <div
@@ -65,13 +66,17 @@ const UserCard = ({userInfo, presence, editing}) => {
           <div></div>
         )}
       </div>
-      <div className='flex-grow pr-0 min-w-0'>
+      <div className={`flex-grow pr-0 min-w-0 ${statusOpacity}`}>
         <h2 className='pb-px flex items-center text-sm font-bold text-gray-700'>
           <div className='flex-shrink truncate'>{userName}</div>
         </h2>
         <p className='truncate text-xs text-gray-600'>{userEmail}</p>
       </div>
-      {available && <ActionButtons />}
+      {friend ? (
+        <ActionButtons available={available} />
+      ) : (
+        <ActionButton content={<AddFriendIcon />} />
+      )}
     </div>
   )
 }
