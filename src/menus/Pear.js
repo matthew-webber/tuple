@@ -6,7 +6,7 @@ import UserCard from '../layout/UserCard'
 import Loading from '../Loading'
 import {EditIcon, CancelIcon} from '../media/Icons'
 
-const Pear = () => {
+const Scroll = () => {
   const [loading, setLoading] = useState(false)
   const [editing, setEditing] = useState(false)
 
@@ -25,6 +25,7 @@ const Pear = () => {
   return (
     <>
       <div className='p-16'>
+        <h2 className='pb-2 text-sm text-gray-700'>Hidden scrollbar</h2>
         <div
           className='antialiased overflow-hidden'
           style={{
@@ -160,7 +161,7 @@ const Pear = () => {
               </div>
             </header>
             <div className='flex-shrink-0'></div>
-            <div className='scroll-hide-chrome relative flex-grow overflow-y-auto'>
+            <div className='scroll-hide-chrome relative flex-grow overflow-y-auto users-main'>
               <div
                 className='sticky top-0 flex items-center bg-gray-50 z-10 p-3 border-b leading-3'
                 style={{fontSize: '11'}}
@@ -186,14 +187,23 @@ const Pear = () => {
                 presence='online'
                 editing={editing}
               />
-
               <UserCard
                 userInfo={{
                   imgThumb: <Gravatar />,
                   userName: 'Jeramy Baker',
                   userEmail: 'jeramytbaker@gmail.com',
                 }}
+                presence='online'
+                editing={editing}
+              />
+              <UserCard
+                userInfo={{
+                  imgThumb: <Gravatar />,
+                  userName: 'Richard Christy',
+                  userEmail: 'richard@hs.com',
+                }}
                 presence='busy'
+                editing={editing}
               />
               <UserCard
                 userInfo={{
@@ -202,6 +212,7 @@ const Pear = () => {
                   userEmail: 'gratefulbrent@dead.com',
                 }}
                 presence='offline'
+                editing={editing}
               />
               <div
                 className='sticky top-0 flex items-center bg-gray-50 z-10 p-3 border-t border-b leading-3'
@@ -233,4 +244,4 @@ const Pear = () => {
   )
 }
 
-export default Pear
+export default Scroll

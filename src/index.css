@@ -24,4 +24,22 @@
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
   }
+  .users-overlay::after {
+    content: '';
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 50%;
+    margin-top: auto;
+    bottom: 0px;
+    background: linear-gradient(
+      180deg,
+      rgba(139, 167, 32, 0) 80%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    pointer-events: none;
+  }
 }
