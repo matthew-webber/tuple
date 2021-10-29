@@ -6,7 +6,7 @@ import UserCard from '../layout/UserCard'
 import Loading from '../Loading'
 import {EditIcon, CancelIcon} from '../media/Icons'
 
-const Scroll = () => {
+const Scrollable = () => {
   const [loading, setLoading] = useState(false)
   const [editing, setEditing] = useState(false)
 
@@ -244,4 +244,4 @@ const Scroll = () => {
   )
 }
 
-export default Scroll
+export default Scrollable
