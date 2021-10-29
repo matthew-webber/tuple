@@ -1,5 +1,8 @@
 import React, {useState} from 'react'
+import {Fade} from 'react-awesome-reveal'
+import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
+import UserCard from '../layout/UserCard'
 import Loading from '../Loading'
 
 const Pear = () => {
@@ -174,7 +177,14 @@ const Pear = () => {
                   </button>
                 </div>
               </div>
-              <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
+              <UserCard
+                userInfo={{
+                  imgThumb: <Gravatar />,
+                  userName: 'Matt Webber',
+                  userEmail: 'matthew.lee.webber@gmail.com',
+                }}
+              />
+              {/* <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
                 <div className='flex-shrink-0 flex items-center justify-end transition-all duration-150 ease-in-out overflow-hidden w-0'>
                   <button
                     type='button'
@@ -324,7 +334,7 @@ const Pear = () => {
                     )}
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
                 <div className='flex-shrink-0 flex items-center justify-end transition-all duration-150 ease-in-out overflow-hidden w-0'>
                   <button
