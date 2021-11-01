@@ -6,8 +6,10 @@ function App() {
     <div className='App'>
       <body className='overflow-hidden' style={{backgroundColor: '#4a1d96'}}>
         <div className='h-screen w-full overflow-auto pb-64 antialiased bg-gray-200'>
-          <Scrollable />
-          <NotScrollable />
+          <div className='flex flex-wrap'>
+            <Scrollable />
+            <NotScrollable />
+          </div>
         </div>
       </body>
     </div>

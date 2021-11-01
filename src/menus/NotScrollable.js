@@ -4,7 +4,7 @@ import Caption from '../menus/Caption'
 import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
 import UserCard from '../layout/UserCard'
-import {EditIcon, CancelIcon} from '../media/Icons'
+import {EditIcon, CancelIcon, ChevronDown} from '../media/Icons'
 
 const NotScrollable = () => {
   const [editing, setEditing] = useState(false)
@@ -136,20 +136,7 @@ const NotScrollable = () => {
                     <Gravatar />
                   </div>
                   <div className='text-purple-200'>
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      width='16'
-                      height='16'
-                      viewBox='0 0 24 24'
-                      fill='none'
-                      stroke='currentColor'
-                      strokeWidth='2'
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      className='feather feather-chevron-down'
-                    >
-                      <polyline points='6 9 12 15 18 9'></polyline>
-                    </svg>
+                    <ChevronDown />
                   </div>
                 </button>
               </div>
@@ -157,22 +144,7 @@ const NotScrollable = () => {
             <div className='flex-shrink-0'></div>
             <div className='scroll-hide-chrome relative flex-grow overflow-y-hidden users-main'>
               <div className='flex-grow users-overlay'>
-                <div
-                  className='sticky top-0 flex items-center bg-gray-50 z-10 p-3 border-b leading-3'
-                  style={{fontSize: '11px'}}
-                >
-                  <div className='flex-grow uppercase text-gray-500 tracking-wider font-bold'>
-                    My Friends
-                  </div>
-                  <div>
-                    <button
-                      className='text-xs text-gray-500 font-normal'
-                      onClick={editClick}
-                    >
-                      {!editing ? <EditIcon /> : <CancelIcon />}
-                    </button>
-                  </div>
-                </div>
+                
                 <UserCard
                   userInfo={{
                     imgThumb: <Gravatar />,
