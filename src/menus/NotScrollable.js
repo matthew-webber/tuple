@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
+import Caption from '../menus/Caption'
 import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
 import UserCard from '../layout/UserCard'
@@ -15,10 +16,10 @@ const NotScrollable = () => {
   return (
     <>
       <div className='p-16'>
-        <h2 className='pb-2 text-sm text-gray-700'>
-          Hidden scrollbar w/ "more content blur"{' '}
-          <sup className='text-red-900 text-base'>*</sup>
-        </h2>
+        <Caption
+          text='Hidden scrollbar w/ "more content blur"'
+          asterisk={true}
+        />
         <div
           className='antialiased overflow-hidden'
           style={{

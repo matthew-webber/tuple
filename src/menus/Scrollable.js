@@ -4,6 +4,7 @@ import Gravatar from '../layout/Gravatar'
 import HeaderSearch from '../layout/HeaderSearch'
 import UserCard from '../layout/UserCard'
 import {EditIcon, CancelIcon} from '../media/Icons'
+import Caption from './Caption'
 
 const Scrollable = () => {
   const [editing, setEditing] = useState(false)
@@ -15,7 +16,7 @@ const Scrollable = () => {
   return (
     <>
       <div className='p-16'>
-        <h2 className='pb-2 text-sm text-gray-700'>Hidden scrollbar</h2>
+        <Caption text='Hidden scrollbar' />
         <div
           className='antialiased overflow-hidden'
           style={{
