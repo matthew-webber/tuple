@@ -1,7 +1,6 @@
 import React from 'react'
 
-const StickyHeader = ({text, buttons}) => {
-  
+const StickyHeader = ({text, ...props}) => {
   return (
     <>
       <div
@@ -9,16 +8,9 @@ const StickyHeader = ({text, buttons}) => {
         style={{fontSize: '11px'}}
       >
         <div className='flex-grow uppercase text-gray-500 tracking-wider font-bold'>
-          My Friends
+          {text}
         </div>
-        <div>
-          <button
-            className='text-xs text-gray-500 font-normal'
-            onClick={editClick}
-          >
-            {!editing ? <EditIcon /> : <CancelIcon />}
-          </button>
-        </div>
+        {props.children}
       </div>
     </>
   )

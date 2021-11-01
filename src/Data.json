@@ -1,0 +1,56 @@
+{
+  "users": {
+    "friends": [
+      {
+        "name": "Matt Webber",
+        "email": "matthew.lee.webber@gmail.com",
+        "img": "https://secure.gravatar.com/avatar/fad484263fe40659289b87e5e532b5fa",
+        "presence": ["online"]
+      },
+      {
+        "name": "Jeramy Baker",
+        "email": "jeramy@gmail.com",
+        "img": "",
+        "presence": ["online"]
+      },
+      {
+        "name": "Richard Christy",
+        "email": "richard@hs.com",
+        "img": "",
+        "presence": ["online", "busy"]
+      },
+      {
+        "name": "Brent Mydland",
+        "email": "gratefulbrent@dead.org",
+        "img": "",
+        "presence": ["offline"]
+      }
+    ],
+    "team": [
+      {
+        "name": "Ben Orenstein",
+        "email": "ben@tuple.app",
+        "img": "https://www.gravatar.com/avatar/b635972e073c025c34c6226c5a8a01f9?s=80&d=https%3A%2F%2Fs3.wasabisys.com%2Ftuple%2Fimages%2Fmissing-gravatar-purple.png",
+        "presence": []
+      },
+      {
+        "name": "Derrick Reimer",
+        "email": "derrickreimer@gmail.com",
+        "img": "https://www.gravatar.com/avatar/441211cbec372b4ffc4c5dbd9278bc25?s=80&d=https%3A%2F%2Fs3.wasabisys.com%2Ftuple%2Fimages%2Fmissing-gravatar-purple.png",
+        "presence": []
+      },
+      {
+        "name": "Jane Doe",
+        "email": "janedoe@gmail.com",
+        "img": "",
+        "presence": []
+      },
+      {
+        "name": "John Doe",
+        "email": "johndoe@gmail.com",
+        "img": "",
+        "presence": []
+      }
+    ]
+  }
+}
