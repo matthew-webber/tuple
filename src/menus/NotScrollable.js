@@ -6,6 +6,8 @@ import {EditIcon, CancelIcon, ChevronDown, UserPlus} from '../media/Icons'
 import StickyHeader from '../layout/StickyHeader'
 import UserList from '../layout/UserList'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
+import UserCard from '../layout/UserCard'
+import RemoveButton from '../layout/RemoveButton'
 
 const HiddenScrollbarBlur = (props) => {
   const [editing, setEditing] = useState(false)
@@ -16,8 +18,8 @@ const HiddenScrollbarBlur = (props) => {
 
   const [intersectTarget, isIntersecting] = useIntersectionObserver({
     root: document.querySelector('user-window'),
-    rootMargin: '0px 0px 900px',
-    threshold: 0,
+    rootMargin: '0px',
+    threshold: 0.8,
   })
 
   return (
@@ -71,11 +73,14 @@ const HiddenScrollbarBlur = (props) => {
                   editing={editing}
                 />
                 <StickyHeader text='Team Directory' />
-                <UserList
-                  x={intersectTarget}
-                  users={props.data.users.team}
-                  usersType='team'
-                />
+                <UserList users={props.data.users.team} usersType='team' />
+                <UserCard
+                  ref={intersectTarget}
+                  userData={props.data.users.friends[0]}
+                  friend={true}
+                >
+                  <RemoveButton visible={editing} />
+                </UserCard>
                 {/* <div ref={intersectTarget} className='intersection-anchor'></div> */}
                 <div
                   className={`users-overlay sticky bottom-0 ${

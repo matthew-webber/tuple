@@ -1,9 +1,9 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {createRef, useEffect, useRef, useState} from 'react'
 
 const useIntersectionObserver = (options) => {
   const [isIntersecting, setIsIntersecting] = useState(false)
   console.log(isIntersecting, 'isIntersecting')
-  const intersectTarget = useRef(null)
+  const intersectTarget = createRef()
 
   const changeIntersecting = (entries) => {
     const [entry] = entries
