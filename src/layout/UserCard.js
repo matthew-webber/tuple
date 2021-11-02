@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import Loading from '../Loading'
 import {AddFriendIcon} from '../media/Icons'
 import ActionButton from './ActionButton'
 import ActionButtons from './ActionButtons'
 import Gravatar from './Gravatar'
 
-const UserCard = ({userData, friend, ...props}) => {
+const UserCard = ({userData, friend, last, ...props}) => {
   const {img, name, email, presence} = userData
-
+  last && console.log('i am last', last)
   const getStatusColor = (p) => {
     return p.includes('busy')
       ? 'bg-red-400'
@@ -17,6 +17,7 @@ const UserCard = ({userData, friend, ...props}) => {
       ? 'bg-green-400'
       : ''
   }
+  const lastRef = useRef(last)
 
   const getAvailability = (a) => {
     return a.includes('online') && !a.includes('busy') ? true : false
@@ -27,7 +28,10 @@ const UserCard = ({userData, friend, ...props}) => {
   const statusOpacity = !available && friend ? 'opacity-75' : ''
 
   return (
-    <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
+    <div
+      ref={lastRef.current}
+      className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'
+    >
       {/* remove button */}
       {props.children}
       <div className={`relative p-3 flex-shrink-0 ${statusOpacity}`}>

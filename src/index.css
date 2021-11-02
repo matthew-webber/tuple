@@ -24,19 +24,18 @@
     -ms-overflow-style: none; /* Internet Explorer 10+ */
     scrollbar-width: none; /* Firefox */
   }
-  .users-overlay:after {
-    content: '';
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    height: 50%;
-    margin-top: auto;
-    bottom: 0px;
+  .users-overlay {
+    height: 10%;
+    /* margin-top: auto; */
     background: linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0) 75%,
-      rgba(255, 255, 255, 1) 100%
+      transparent 10%,
+      rgba(255, 255, 255, 1) 90%
     );
-    pointer-events: none;
+  }
+
+  .intersection-anchor {
+    height: 10px;
+    background: black;
   }
 }
