@@ -1,34 +1,40 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useReducer, useRef, useState} from 'react'
 import useIntersectionObserver from '../../hooks/useIntersectionObserver'
-import {SET_CURRENT} from '../types'
+import {SET_CURRENT, CLEAR_CURRENT} from '../types'
 import intersectContext from './IntersectContext'
 import intersectReducer from './intersectReducer'
 
 const IntersectState = (props) => {
   const initialState = {
     isIntersecting: false,
-    currentRef: null,
+    currentRef: useRef(null),
     currentSlave: null,
     currentIntersecting: false,
+    currentOptions: {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0,
+    },
   }
 
   const [state, dispatch] = useReducer(intersectReducer, initialState)
 
-  const getIntersectRef = (data) => {
-    const {options} = data
-    const [intersectRef, isIntersecting] = useIntersectionObserver({
-      root: options.root,
-      rootMargin: options.rootMargin || '0px',
-      threshold: options.threshold || 0,
-    })
-    return [intersectRef, isIntersecting]
+  const changeIntersecting = (entries) => {
+    const [entry] = entries
+    setCurrent(entry.isIntersecting, 'currentIntersecting')
   }
 
-  const setIntersectRef = (options) => {
-    const [intersectRef, isIntersecting] = getIntersectRef(options)
-    setCurrent({data: intersectRef, target: 'currentRef'})
-    setCurrent({data: isIntersecting, target: 'currentIntersecting'})
-  }
+  useEffect(() => {
+
+    const observer = new IntersectionObserver(
+      changeIntersecting,
+      state.currentOptions
+    )
+    if (state.currentRef.current) observer.observe(state.currentRef.current)
+    return () => {
+      if (state.currentRef.current) observer.unobserve(state.currentRef.current)
+    }
+  }, [state.currentRef, state.currentOptions])
 
   const setCurrent = ({data, target}) => {
     dispatch({type: SET_CURRENT, payload: {data, target}})
@@ -40,10 +46,12 @@ const IntersectState = (props) => {
   return (
     <intersectContext.Provider
       value={{
-        isIntersecting: state.isIntersecting,
+        currentIntersecting: state.currentIntersecting,
         currentRef: state.currentRef,
+        currentOptions: state.currentOptions,
         currentSlave: state.currentSlave,
-        setIntersectRef,
+        setCurrent,
+        clearCurrent,
       }}
     >
       {props.children}

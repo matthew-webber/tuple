@@ -1,12 +1,16 @@
-import React, {useRef, useState} from 'react'
+import React, {useContext, useEffect, useRef, useState} from 'react'
+import IntersectContext from '../context/intersect/IntersectContext'
 import Loading from '../Loading'
 import {AddFriendIcon} from '../media/Icons'
 import ActionButton from './ActionButton'
 import ActionButtons from './ActionButtons'
 import Gravatar from './Gravatar'
 
-const UserCard = React.forwardRef(({userData, friend, ...props}, ref) => {
+const UserCard = ({userData, friend, setRef, ...props}) => {
   const {img, name, email, presence} = userData
+  const intersectContext = useContext(IntersectContext)
+  const {currentRef} = intersectContext
+
   const getStatusColor = (p) => {
     return p.includes('busy')
       ? 'bg-red-400'
@@ -27,7 +31,7 @@ const UserCard = React.forwardRef(({userData, friend, ...props}, ref) => {
 
   return (
     <div
-      ref={ref ? ref : null}
+      ref={currentRef}
       className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'
     >
       {/* remove button */}
@@ -58,6 +62,6 @@ const UserCard = React.forwardRef(({userData, friend, ...props}, ref) => {
       )}
     </div>
   )
-})
+}
 
 export default UserCard
