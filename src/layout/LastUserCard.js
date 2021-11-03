@@ -6,10 +6,10 @@ import ActionButton from './ActionButton'
 import ActionButtons from './ActionButtons'
 import Gravatar from './Gravatar'
 
-const UserCard = ({userData, friend, setRef, ...props}) => {
+const LastUserCard = ({userData, friend, setRef, ...props}) => {
   const {img, name, email, presence} = userData
   const intersectContext = useContext(IntersectContext)
-  const {currentRef} = intersectContext
+  const {currentRef, currentOptions, changeIntersecting} = intersectContext
 
   const getStatusColor = (p) => {
     return p.includes('busy')
@@ -21,6 +21,8 @@ const UserCard = ({userData, friend, setRef, ...props}) => {
       : ''
   }
 
+
+
   const getAvailability = (a) => {
     return a.includes('online') && !a.includes('busy') ? true : false
   }
@@ -30,7 +32,10 @@ const UserCard = ({userData, friend, setRef, ...props}) => {
   const statusOpacity = !available && friend ? 'opacity-75' : ''
 
   return (
-    <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
+    <div
+      ref={currentRef}
+      className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'
+    >
       {/* remove button */}
       {props.children}
       <div className={`relative p-3 flex-shrink-0 ${statusOpacity}`}>
@@ -61,4 +66,4 @@ const UserCard = ({userData, friend, setRef, ...props}) => {
   )
 }
 
-export default UserCard
+export default LastUserCard

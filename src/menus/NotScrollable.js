@@ -9,13 +9,19 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import UserCard from '../layout/UserCard'
 import RemoveButton from '../layout/RemoveButton'
 import IntersectContext from '../context/intersect/IntersectContext'
+import LastUserCard from '../layout/LastUserCard'
 
 const HiddenScrollbarBlur = (props) => {
   const intersectContext = useContext(IntersectContext)
   const [editing, setEditing] = useState(false)
 
-  const {currentRef, currentIntersecting, currentOptions, setCurrent} =
-    intersectContext
+  const {
+    currentRef,
+    currentIntersecting,
+    changeIntersecting,
+    currentOptions,
+    setCurrent,
+  } = intersectContext
 
   const editClick = () => {
     setEditing(!editing)
@@ -31,6 +37,18 @@ const HiddenScrollbarBlur = (props) => {
       target: 'currentOptions',
     })
   }, [])
+
+  useEffect(() => {
+    console.log('use effect')
+    const observer = new IntersectionObserver(
+      changeIntersecting,
+      currentOptions
+    )
+    if (currentRef.current) observer.observe(currentRef.current)
+    return () => {
+      if (currentRef.current) observer.unobserve(currentRef.current)
+    }
+  }, [currentRef, currentOptions])
 
   const setRef = (ref) => {
     setCurrent({data: ref, target: 'currentRef'})
@@ -93,13 +111,13 @@ const HiddenScrollbarBlur = (props) => {
               />
               <StickyHeader text='Team Directory' />
               <UserList users={props.data.users.team} usersType='team' />
-              <UserCard
+              <LastUserCard
                 setRef={true}
                 userData={props.data.users.friends[0]}
                 friend={true}
               >
                 <RemoveButton visible={editing} />
-              </UserCard>
+              </LastUserCard>
               {/* <div ref={intersectTarget} className='intersection-anchor'></div> */}
               <div
                 className={`users-overlay sticky bottom-0 ${

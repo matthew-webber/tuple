@@ -20,12 +20,13 @@ const IntersectState = (props) => {
   const [state, dispatch] = useReducer(intersectReducer, initialState)
 
   const changeIntersecting = (entries) => {
+    console.log('change intersecting')
     const [entry] = entries
-    setCurrent(entry.isIntersecting, 'currentIntersecting')
+    setCurrent({data: entry.isIntersecting, target: 'currentIntersecting'})
   }
 
   useEffect(() => {
-
+    console.log('use effect')
     const observer = new IntersectionObserver(
       changeIntersecting,
       state.currentOptions
@@ -50,6 +51,7 @@ const IntersectState = (props) => {
         currentRef: state.currentRef,
         currentOptions: state.currentOptions,
         currentSlave: state.currentSlave,
+        changeIntersecting,
         setCurrent,
         clearCurrent,
       }}
