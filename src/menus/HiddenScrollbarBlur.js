@@ -11,10 +11,7 @@ const HiddenScrollbarBlur = (props) => {
   const intersectContext = useContext(IntersectContext)
   const [editing, setEditing] = useState(false)
 
-  const {
-    currentIntersecting,
-    setCurrent,
-  } = intersectContext
+  const {currentIntersecting, setCurrent} = intersectContext
 
   const editClick = () => {
     setEditing(!editing)
@@ -33,10 +30,7 @@ const HiddenScrollbarBlur = (props) => {
   return (
     <>
       <div className='p-16'>
-        <Caption
-          text='Hidden scrollbar w/ "more content blur"'
-          asterisk={true}
-        />
+        <Caption text='Hidden scrollbar w/ "more content blur"' />
         <div
           className='antialiased overflow-hidden'
           style={{

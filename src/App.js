@@ -1,6 +1,6 @@
 import IntersectState from './context/intersect/IntersectState'
-import HiddenScrollbarBlur from './menus/NotScrollable'
-import HiddenScrollbar from './menus/Scrollable'
+import HiddenScrollbarBlur from './menus/HiddenScrollbarBlur'
+import HiddenScrollbar from './menus/HiddenScrollbar'
 
 function App() {
   const data = require('./Data.json')
