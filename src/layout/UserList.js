@@ -1,14 +1,14 @@
-import React, {useState} from 'react'
+import React from 'react'
 import RemoveButton from './RemoveButton'
 import UserCard from './UserCard'
 
-const UserList = React.forwardRef(({users, usersType, editing, x}, ref) => {
+const UserList = ({users, usersType, editing}) => {
   return (
     <>
       {users.map((user, i) => {
         return (
           <UserCard
-            ref={ref ? ref : null}
+            lastCard={i === users.length - 1}
             userData={user}
             friend={usersType === 'friends' && true}
           >
@@ -18,6 +18,6 @@ const UserList = React.forwardRef(({users, usersType, editing, x}, ref) => {
       })}
     </>
   )
-})
+}
 
 export default UserList

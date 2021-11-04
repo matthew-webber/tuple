@@ -1,5 +1,4 @@
 import React, {useEffect, useReducer, useRef, useState} from 'react'
-import useIntersectionObserver from '../../hooks/useIntersectionObserver'
 import {SET_CURRENT, CLEAR_CURRENT} from '../types'
 import intersectContext from './IntersectContext'
 import intersectReducer from './intersectReducer'

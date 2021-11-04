@@ -9,7 +9,8 @@ import Gravatar from './Gravatar'
 const LastUserCard = ({userData, friend, setRef, ...props}) => {
   const {img, name, email, presence} = userData
   const intersectContext = useContext(IntersectContext)
-  const {currentRef, currentOptions, changeIntersecting} = intersectContext
+  const {currentRef, currentOptions, changeIntersecting, currentIntersecting} =
+    intersectContext
 
   const getStatusColor = (p) => {
     return p.includes('busy')
@@ -21,7 +22,7 @@ const LastUserCard = ({userData, friend, setRef, ...props}) => {
       : ''
   }
 
-
+  console.log('card isIntersecting', currentIntersecting)
 
   const getAvailability = (a) => {
     return a.includes('online') && !a.includes('busy') ? true : false

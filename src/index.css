@@ -27,11 +27,7 @@
   .users-overlay {
     height: 10%;
     /* margin-top: auto; */
-    background: linear-gradient(
-      180deg,
-      transparent 10%,
-      rgba(255, 255, 255, 1) 90%
-    );
+    /* background: linear-gradient(180deg, black 10%, rgba(255, 255, 255, 1) 90%); */
   }
 
   .intersection-anchor {

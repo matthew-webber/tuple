@@ -1,12 +1,11 @@
-import React, {useContext, useEffect, useRef, useState} from 'react'
+import React, {useContext} from 'react'
 import IntersectContext from '../context/intersect/IntersectContext'
-import Loading from '../Loading'
 import {AddFriendIcon} from '../media/Icons'
 import ActionButton from './ActionButton'
 import ActionButtons from './ActionButtons'
 import Gravatar from './Gravatar'
 
-const UserCard = ({userData, friend, setRef, ...props}) => {
+const UserCard = ({userData, friend, lastCard, ...props}) => {
   const {img, name, email, presence} = userData
   const intersectContext = useContext(IntersectContext)
   const {currentRef} = intersectContext
@@ -30,7 +29,10 @@ const UserCard = ({userData, friend, setRef, ...props}) => {
   const statusOpacity = !available && friend ? 'opacity-75' : ''
 
   return (
-    <div className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'>
+    <div
+      ref={lastCard ? currentRef : null}
+      className='border-b flex items-center leading-normal border-gray-200 hover:bg-gray-50 transition duration-150 ease-in-out'
+    >
       {/* remove button */}
       {props.children}
       <div className={`relative p-3 flex-shrink-0 ${statusOpacity}`}>

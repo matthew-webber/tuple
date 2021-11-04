@@ -5,21 +5,14 @@ import HeaderSearch from '../layout/HeaderSearch'
 import {EditIcon, CancelIcon, ChevronDown, UserPlus} from '../media/Icons'
 import StickyHeader from '../layout/StickyHeader'
 import UserList from '../layout/UserList'
-import useIntersectionObserver from '../hooks/useIntersectionObserver'
-import UserCard from '../layout/UserCard'
-import RemoveButton from '../layout/RemoveButton'
 import IntersectContext from '../context/intersect/IntersectContext'
-import LastUserCard from '../layout/LastUserCard'
 
 const HiddenScrollbarBlur = (props) => {
   const intersectContext = useContext(IntersectContext)
   const [editing, setEditing] = useState(false)
 
   const {
-    currentRef,
     currentIntersecting,
-    changeIntersecting,
-    currentOptions,
     setCurrent,
   } = intersectContext
 
@@ -31,35 +24,12 @@ const HiddenScrollbarBlur = (props) => {
     setCurrent({
       data: {
         root: document.querySelector('user-window'),
-        rootMargin: '0px',
         threshold: 0.8,
       },
       target: 'currentOptions',
     })
   }, [])
 
-  useEffect(() => {
-    console.log('use effect')
-    const observer = new IntersectionObserver(
-      changeIntersecting,
-      currentOptions
-    )
-    if (currentRef.current) observer.observe(currentRef.current)
-    return () => {
-      if (currentRef.current) observer.unobserve(currentRef.current)
-    }
-  }, [currentRef, currentOptions])
-
-  const setRef = (ref) => {
-    setCurrent({data: ref, target: 'currentRef'})
-  }
-
-  console.log(
-    '\ncurrentIntersecting ' +
-      JSON.stringify(currentIntersecting) +
-      '\ncurrentOptions ' +
-      JSON.stringify(currentOptions)
-  )
   return (
     <>
       <div className='p-16'>
@@ -111,26 +81,14 @@ const HiddenScrollbarBlur = (props) => {
               />
               <StickyHeader text='Team Directory' />
               <UserList users={props.data.users.team} usersType='team' />
-              <LastUserCard
-                setRef={true}
-                userData={props.data.users.friends[0]}
-                friend={true}
-              >
-                <RemoveButton visible={editing} />
-              </LastUserCard>
-              {/* <div ref={intersectTarget} className='intersection-anchor'></div> */}
               <div
-                className={`users-overlay sticky bottom-0 ${
-                  currentIntersecting ? 'hidden' : 'visible'
+                className={`sticky bottom-0 bg-gradient-to-t from-white users-overlay ${
+                  currentIntersecting ? 'hidden' : 'motion-safe:animate-fadeIn'
                 }`}
               ></div>
             </div>
           </main>
         </div>
-        <h2 className='pt-2 text-sm text-gray-700'>
-          <sup className='text-red-900 text-base'>*</sup> Not scrollable...
-          <i>yet!</i>
-        </h2>
       </div>
     </>
   )
